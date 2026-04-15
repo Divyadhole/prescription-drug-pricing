@@ -1,0 +1,25 @@
+name: Drug Pricing Analysis Validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install pandas numpy matplotlib openpyxl requests
+      - name: Run pipeline
+        run: python run_analysis.py
+      - name: Verify outputs
+        run: |
+          test -f docs/index.html && echo "Dashboard: OK"
+          test -f data/drug_pricing.db && echo "Database: OK"
+          ls outputs/charts/*.png | wc -l
