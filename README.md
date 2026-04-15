@@ -156,6 +156,4 @@ pip install -r requirements.txt
 python run_analysis.py
 ```
 
----
 
-*Junior Data Analyst Portfolio — Project 18 of 40 | Data: CMS Medicare Part D (public domain) + OECD Health Statistics*
